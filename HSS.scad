@@ -7,9 +7,9 @@ wire_gauge_mm = 0.559;
 pin2 = [0, 5.9, 1.4];
 pin1 = [5, 3.8, 1.7];
 
-stem = [0, 0, 3.5];
-peg1 = [-5.5, 0, 1.9];
-peg2 = [5.5, 0, 1.9];
+stem = [0, 0, 3.6];
+peg1 = [-5.5, 0, 2];
+peg2 = [5.5, 0, 2];
 base = [11*grid, 11*grid, 3.5];
 
 diode_dia = diode_gauge_mm * 0.98;
@@ -94,14 +94,11 @@ module left_pin_wire_slots(){
     translate([-5.25*grid, 4.5*grid, 0])
         cube([1, 1.25*diode_dia, base.z*2], center = true);
 
-    translate([0, -4*grid, base.z/2])
-        cube([20, wire_dia, base.z], center = true);
-    
-    translate([-5.25*grid, -4*grid, 0])
-        cube([1, wire_dia, base.z*2], center = true);
+    translate([5, -4*grid, base.z/2])
+        cube([8, wire_dia, 3*diode_dia], center = true);
     
     translate([-4*grid, -4*grid, -base.z/2])
-        cube([4, wire_dia, 3*diode_dia], center = true);
+        cube([8, wire_dia, 3*diode_dia], center = true);
 
 }
 
@@ -111,7 +108,8 @@ module right_pin_wire_slots(){
     translate([pin1.x, -1.5, -base.z/2])
         cube([2*wire_dia, (base.y-pin1.y+1), 3*wire_dia], center = true);
     translate([6.9, 3.8, -base.z/2])
-        cube([pin1.y, 1.2*wire_dia, 3*wire_dia], center = true);
+        cube([pin1.y, 1.2*wire_dia, 2*base.z], center = true);
+
     translate([peg2.x, peg2.y, -base.z/2])
         difference() {
             d = peg2.z*2.5;
@@ -127,6 +125,7 @@ module diode_slot(){
             rotate([0, 0, diode_angle]){
                 cube([2.1, 3.8, 2.1], center = true);
             }
+
         translate([-2.45*grid, -1.5*grid, -base.z/2])
             rotate([0, 0, diode_angle]){
                 translate([0, 0, 0])
