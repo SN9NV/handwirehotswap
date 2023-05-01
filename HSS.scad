@@ -95,18 +95,22 @@ module left_pin_wire_slots(){
         cube([1, 1.25*diode_dia, base.z*2], center = true);
 
     translate([5, -4*grid, base.z/2])
-        cube([8, wire_dia, 3*diode_dia], center = true);
-    
-    translate([-4*grid, -4*grid, -base.z/2])
-        cube([8, wire_dia, 3*diode_dia], center = true);
+        cube([32, wire_dia, 4*diode_dia], center = true);
 
+    translate([-4*grid, -4*grid, -base.z/2])
+        cube([4, wire_dia, 3*diode_dia], center = true);
+
+    translate([-5.2*grid, -4*grid, -base.z/2])
+        cube([1, 1.25*diode_dia, base.z*2], center = true);
 }
 
 module right_pin_wire_slots(){
-    translate([pin1.x, 4*grid, base.z/2])
+    translate([pin1.x, 4.5*grid, base.z/2])
         cube([1.2*wire_dia, pin1.y, 3*wire_dia], center = true);
+
     translate([pin1.x, -1.5, -base.z/2])
         cube([2*wire_dia, (base.y-pin1.y+1), 3*wire_dia], center = true);
+
     translate([6.9, 3.8, -base.z/2])
         cube([pin1.y, 1.2*wire_dia, 2*base.z], center = true);
 
